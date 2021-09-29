@@ -13,7 +13,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /bookings/{booking_id}}:
+ *  /bookings/{booking_id}:
  *    get:
  *      tags:
  *        - Bookings

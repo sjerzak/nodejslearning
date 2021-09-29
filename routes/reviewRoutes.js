@@ -36,7 +36,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /reviews/{review_id:
+ *  /reviews/{review_id}:
  *    get:
  *      tags:
  *        - Reviews
