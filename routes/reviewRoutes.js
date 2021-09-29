@@ -36,7 +36,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /reviews/{review_id}}:
+ *  /reviews/{review_id:
  *    get:
  *      tags:
  *        - Reviews
@@ -48,7 +48,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /reviews/{updated_review_id}}:
+ *  /reviews/{updated_review_id}:
  *    patch:
  *      tags:
  *        - Reviews
