@@ -30,7 +30,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:3000/api/v1/',
+      url: 'https://tofiniu.herokuapp.com/api/v1/',
       variables: {}
     }
   ]
