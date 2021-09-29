@@ -1,3 +1,5 @@
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -17,7 +19,33 @@ const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const viewRouter = require('./routes/viewRoutes');
 
+const swaggerDefinition = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Natours',
+    description:
+      'The Natours APi contains endpoints for Tours, Users, and Reviews.',
+    contact: {},
+    version: '1.0.0-oas3'
+  },
+  servers: [
+    {
+      url: 'http://localhost:3000/api/v1/',
+      variables: {}
+    }
+  ]
+};
+const options = {
+  swaggerDefinition,
+  // Paths to files containing OpenAPI definitions
+  apis: ['./routes/*.js']
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
 const app = express();
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.enable('trust proxy');
 

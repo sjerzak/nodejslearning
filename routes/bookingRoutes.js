@@ -1,3 +1,32 @@
+/**
+ *@swagger
+ *paths:
+ *  /bookings:
+ *    get:
+ *      tags:
+ *        - Bookings
+ *      summary: Get All Bookings
+ *      operationId: GetAllBookings
+ *      parameters: []
+ *      responses:
+ *        '200':
+ *          description: ''
+ *          headers: {}
+ *      deprecated: false
+ *  /bookings/{booking_id}}:
+ *    get:
+ *      tags:
+ *        - Bookings
+ *      summary: Get Booking
+ *      operationId: GetBooking
+ *      parameters: []
+ *      responses:
+ *        '200':
+ *          description: ''
+ *          headers: {}
+ *      deprecated: false
+ */
+
 const express = require('express');
 const bookingController = require('./../controllers/bookingController');
 const authController = require('./../controllers/authController');
