@@ -61,7 +61,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /tours/5c88fa8cf4afda39709c2961:
+ *  /tours/{tour_id}:
  *    get:
  *      tags:
  *        - Tours
@@ -73,7 +73,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /tours/5cdb06c8d87ca1051d90eda9:
+ *  /tours/{modified_tour_id}:
  *    patch:
  *      tags:
  *        - Tours
@@ -113,7 +113,7 @@
  *          description: ''
  *          headers: {}
  *      deprecated: false
- *  /tours/5c88fa8cf4afda39709c295a:
+ *  /tours/{del_tour_id}:
  *    delete:
  *      tags:
  *        - Tours
