@@ -20,3 +20,21 @@ export const bookTour = async tourId => {
     showAlert('error', err);
   }
 };
+
+export const addTourToCart = async tourId => {
+  try {
+    const req = await axios(`/api/v1/tours/${tourId.tourId}`);
+    const tour = JSON.parse(req.request.response).data.data;
+
+    await axios.patch(`/api/v1/users/updateMyCart`, {
+      name: `${tour.name}`,
+      description: `${tour.description}`,
+      images: [`${tour.imageCover}`],
+      amount: `${tour.price}` * 100,
+      currency: 'usd',
+      quantity: 1
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};

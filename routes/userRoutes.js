@@ -343,6 +343,9 @@ router.patch('/resetPassword/:token', authController.resetPassword);
 router.use(authController.protect);
 
 router.patch('/updateMyPassword', authController.updatePassword);
+router.patch('/updateMyCart', userController.updateCart);
+router.patch('/clearMyCart', userController.clearCart);
+
 router.get('/me', userController.getMe, userController.getUser);
 router.patch(
   '/updateMe',

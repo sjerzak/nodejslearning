@@ -96,6 +96,65 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
+// exports.updateCart = catchAsync(async (req, res, next) => {
+//   const user = await User.findById(req.user.id);
+
+//   cart: {
+//     name: `${req.body.name} Tour`,
+//     description: req.body.summary,
+//     images: [`https://www.natours.dev/img/tours/${req.body.imageCover}`],
+//     amount: req.body.price * 100,
+//     currency: 'usd',
+//     quantity: 1
+//   }
+
+//   user.cart.name = `${req.body.name} Tour`;
+//   await user.save();
+
+//   res.status(204).json({
+//     status: 'success',
+//     data: null
+//   });
+// });
+
+exports.updateCart = catchAsync(async (req, res, next) => {
+  // console.log(req.body);
+  await User.findByIdAndUpdate(req.user.id, {
+    cart: {
+      name: `${req.body.name} Tour`,
+      description: `${req.body.description}`,
+      images: [`${req.body.images}`],
+      amount: req.body.amount,
+      currency: 'usd',
+      quantity: 1
+    }
+  });
+
+  res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
+
+exports.clearCart = catchAsync(async (req, res, next) => {
+  // console.log(req.body);
+  await User.findByIdAndUpdate(req.user.id, {
+    cart: {
+      name: ``,
+      description: ``,
+      images: [],
+      amount: 0,
+      currency: 'usd',
+      quantity: 0
+    }
+  });
+
+  res.status(204).json({
+    status: 'success',
+    data: null
+  });
+});
+
 exports.createUser = (req, res) => {
   res.status(500).json({
     status: 'error',

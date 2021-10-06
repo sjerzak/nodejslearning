@@ -48,6 +48,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
     select: false
+  },
+  cart: {
+    name: String,
+    description: String,
+    images: [],
+    amount: Number,
+    currency: String,
+    quantity: Number
   }
 });
 
