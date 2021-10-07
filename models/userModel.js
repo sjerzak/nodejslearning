@@ -49,14 +49,15 @@ const userSchema = new mongoose.Schema({
     default: true,
     select: false
   },
-  cart: {
-    name: String,
-    description: String,
-    images: [],
-    amount: Number,
-    currency: String,
-    quantity: Number
-  }
+  cart: []
+  // {
+  //   name: String,
+  //   description: String,
+  //   images: [],
+  //   amount: Number,
+  //   currency: String,
+  //   quantity: Number
+  // }
 });
 
 userSchema.pre('save', async function(next) {

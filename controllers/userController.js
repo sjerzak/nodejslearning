@@ -96,39 +96,25 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-// exports.updateCart = catchAsync(async (req, res, next) => {
-//   const user = await User.findById(req.user.id);
-
-//   cart: {
-//     name: `${req.body.name} Tour`,
-//     description: req.body.summary,
-//     images: [`https://www.natours.dev/img/tours/${req.body.imageCover}`],
-//     amount: req.body.price * 100,
-//     currency: 'usd',
-//     quantity: 1
-//   }
-
-//   user.cart.name = `${req.body.name} Tour`;
-//   await user.save();
-
-//   res.status(204).json({
-//     status: 'success',
-//     data: null
-//   });
-// });
-
 exports.updateCart = catchAsync(async (req, res, next) => {
-  // console.log(req.body);
-  await User.findByIdAndUpdate(req.user.id, {
-    cart: {
-      name: `${req.body.name} Tour`,
-      description: `${req.body.description}`,
-      images: [`${req.body.images}`],
-      amount: req.body.amount,
-      currency: 'usd',
-      quantity: 1
-    }
-  });
+  const currentCart = {
+    name: `${req.body.name} Tour`,
+    description: `${req.body.description}`,
+    images: [`https://www.natours.dev/img/tours/${req.body.images}`],
+    amount: req.body.amount,
+    currency: 'usd',
+    quantity: 1
+  };
+
+  const oldCart = req.user.cart;
+  let newCart = [];
+  if (!req.user.cart[0]) {
+    newCart = currentCart;
+  } else {
+    newCart = [...oldCart, currentCart];
+  }
+
+  await User.findByIdAndUpdate(req.user.id, { cart: newCart });
 
   res.status(204).json({
     status: 'success',
@@ -137,7 +123,6 @@ exports.updateCart = catchAsync(async (req, res, next) => {
 });
 
 exports.clearCart = catchAsync(async (req, res, next) => {
-  // console.log(req.body);
   await User.findByIdAndUpdate(req.user.id, {
     cart: {
       name: ``,
